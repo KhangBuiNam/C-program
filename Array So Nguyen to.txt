@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+    int a[20] , i, n ;
+    for (i=0; i <20 ; i++)
+    {
+    printf ("Nhap cac gia tri cua mang thu: ",i);
+    scanf ("%d", a[i]); 
+    }
+    if (a[i] <2) printf ("Khong phai la so nguyen to");
+    if (a[i]=2) printf ("so",a[i],"la so nguyen to");
+    n=(a[i])/2;
+
+    if (a[i] %n== 0) printf ("So",a[i], "khong la so nguyen to"); else printf ("So",a[i],"la so nguyen to");
+    
+    
+    return 0;
+}

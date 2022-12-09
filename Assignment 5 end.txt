@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <time.h>
+int main()  
+{
+    int n,X;
+    printf ("Nhap so luong phan tu co trong mang: ");
+    scanf("%d",&n);
+    int a[n];
+    printf ("Nhap x : ");
+    scanf ("%d",&X);
+   
+    for (int i = 0; i < n; i++) {
+        a[i] = 1+ rand()%n;
+    }
+     for (int i = 0; i < n; i++) {
+        if (a[i] < X) printf (" %d ", a[i]);
+        
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] < a[j]) 
+            {
+               
+                int k = a[i];
+                a[i] = a[j];
+                a[j] = k;
+            }
+        }
+    }
+    printf ("\n");
+    for (int i = 0; i < n; i++) {
+        printf(" %d ", a[i]);
+    }
+  printf("\nchan giam dan: ");
+    for(int i = 0; i < n; i++)
+    {
+        if(a[i]%2==0)
+        printf("%d ", a[i]);
+    }
+    printf("\nle tang dan: ");
+    for(int i = n; i >= 0; i--)
+    {
+        if(a[i]%2!=0)
+        printf("%d ", a[i]);
+    }
+    return 0;
+}

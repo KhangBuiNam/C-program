@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#define max 100
+int chanle();
+int chanle(int array[], int size, int k)
+{
+    int sochan=0 ;
+    int sole= 0;
+    for (int i=0; i < size; i++){
+        if (array[i]%2==0)
+            sochan++ ;
+        else
+            sole++ ;
+    }
+    if (k==0)
+        return sochan;
+    else 
+        return sole;
+}
+
+int main(void)
+{   
+    system ("cls");
+    int sizeR, sizeC, s,t;
+    int matrix[max][max];
+    int transpose[max][max];
+    int row , column;
+    int  sumRow=0 , sumColumn =0;
+    
+    s = 0;
+    t = 0;
+    printf ("Nhap size cua hang va cot phai bang nhau :\n");
+    scanf ("%d %d", &sizeR, &sizeC);
+    printf ("Nhap cac gia tri cua ma tran: \n");
+    for (row=0; row <sizeR ; row++)
+        {
+        for (column=0 ;column < sizeC ; column++)
+            scanf ("%d",&matrix[row][column]);
+        }                                                   //Nhap gia tri vao 2D
+        printf ("in ra ma tran vua nhap: \n");
+        for (row=0; row<sizeR; row++) {
+        printf ("\n");
+        for (column=0; column<sizeC; column++) {
+            printf ("\t%d",matrix[row][column]);
+        }                                                   // in ra matrix
+    }
+    printf("\n");
+    printf ("Mang sau khi hoan vi: \n");
+    for (row=0; row < sizeR ; row++)
+        for (column=0; column <sizeC; column++)
+        {
+            transpose[row][column] = matrix[column][row];
+        }
+    for (row =0; row<sizeR; row++)
+        for (column=0; column<sizeC; column++)
+        {
+            printf ("%4d", transpose[row][column]);
+            if (column == sizeR-1)
+                printf ("\n");
+        }                                                   //transpose sida
+    for (row=0; row <sizeR ; row++)
+        {
+        for (column=0 ;column < sizeC ; column++)
+        {
+            s = s + matrix[row][column];
+            
+        }
+        printf("\n Sum row s(%d) = %d",row +1 ,s);
+        s = 0;
+        }
+    for (column=0; column <sizeC; column++)
+    {
+        for (row=0; row < sizeR; row++)
+        {
+            t=t+ matrix[row][column];
+        }
+        printf ("\n Sum column t(%d) = %d",column+1,t);
+        t=0;
+    }                                                   //sum row & column
+    int table[sizeR*sizeC];
+    int k=0;
+    printf ("\n");
+    for (row=0; row<sizeR; row++)
+        for (column=0;column < sizeC; column++){
+            table[k]= matrix[row][column];
+            k++;
+        }
+    printf ("\n So chan trong mang: %d ", chanle(table, sizeR*sizeC,0));
+    printf ("\n So le trong mang: %d ", chanle (table, sizeR*sizeC,1));
+    //Y d---------------------------------------------
+    int a[sizeR][sizeC];
+    for (row=0; row<=sizeR ; row++)
+        for (column=0 ; column<=sizeC; column++)
+        a[row][column]=matrix[row][sizeR-1-column];
+    
+    printf ("\n Mang sau khi doi duong cheo la: \n");
+    for (int row=0; row<sizeR ; row++)
+        for (int column=0 ; column<sizeC; column++){
+            printf ("%4d",a[row][column]);
+       
+        if (column==sizeC-1)
+         printf ("\n");
+        }
+    getch();
+    return 0;
+}
